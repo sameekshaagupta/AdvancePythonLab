@@ -34,7 +34,7 @@ def calculate_average_ratings(reviews):
     average_ratings = {productId: sum(ratings) / len(ratings) for productId, ratings in product_ratings.items()}
     return average_ratings
 
-folder_path = '1\sample_data'
+folder_path = '1/sample_data'
 all_reviews = []
 
 for filename in os.listdir(folder_path):
@@ -50,7 +50,14 @@ for productId, avg_rating in average_ratings.items():
     print(f'Product ID: {productId}, Average Rating: {avg_rating:.2f}')
 
 # Get the top 3 products by average rating
-top_products = sorted(average_ratings.items(), key=lambda x: x[1], reverse=True)[:3]
+def get_second_element(item):
+    return item[1]
+
+# Sort the average ratings by the second element in the tuple (the rating) and reverse it to get the highest first
+sorted_products = sorted(average_ratings.items(), key=get_second_element, reverse=True)
+
+# Get the top 3 products
+top_products = sorted_products[:3]
 
 # Print the top 3 products with the highest average ratings
 print("\nTop 3 Products with Highest Average Ratings:")
