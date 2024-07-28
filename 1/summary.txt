@@ -1,6 +1,6 @@
-Total Reviews Processed: 17
+Total Reviews Processed: 18
 Valid Reviews: 17
-Invalid Reviews: 0
+Invalid Reviews: 1
 
 Top 3 Products with Highest Average Ratings:
 Product ID: 9876543210, Average Rating: 5.00
