@@ -44,29 +44,30 @@ for filename in os.listdir(folder_path):
 
 average_ratings = calculate_average_ratings(all_reviews)
 
-# Print the average rating for all products
+#task 1
 print("Average Ratings for All Products:")
 for productId, avg_rating in average_ratings.items():
     print(f'Product ID: {productId}, Average Rating: {avg_rating:.2f}')
 
-# Get the top 3 products by average rating
+
 def get_second_element(item):
     return item[1]
 
-# Sort the average ratings by the second element in the tuple (the rating) and reverse it to get the highest first
+
 sorted_products = sorted(average_ratings.items(), key=get_second_element, reverse=True)
 
-# Get the top 3 products
+
 top_products = sorted_products[:3]
 
-# Print the top 3 products with the highest average ratings
+#task 2
 print("\nTop 3 Products with Highest Average Ratings:")
 for productId, avg_rating in top_products:
     print(f'Product ID: {productId}, Average Rating: {avg_rating:.2f}')
-
+# task 3
 print(f'\nValid Reviews: {valid}')
 print(f'Invalid Reviews: {invalid}')
 
+# task 4
 # Create and write summary to summary.txt
 with open('summary.txt', 'w') as summary_file:
     summary_file.write(f'Total Reviews Processed: {valid + invalid}\n')
