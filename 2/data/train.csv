@@ -1,0 +1,6 @@
+Train ID,Train Name,Source Station,Destination Station,Total Seats
+T001,Express A,A,F,100
+T002,Express B,B,G,120
+T003,Express C,C,H,110
+T004,Express D,D,I,111
+T005,Express E,E,J,121
