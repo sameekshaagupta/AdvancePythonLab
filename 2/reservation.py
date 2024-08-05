@@ -3,7 +3,6 @@ import os
 
 
 FARE_PER_TICKET = 50
-
 class Train:
     def __init__(self, train_id, train_name, source_station, destination_station, total_seats):
         self.train_id = train_id
