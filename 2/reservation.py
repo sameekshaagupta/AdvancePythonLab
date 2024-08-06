@@ -56,7 +56,7 @@ def load_passenger_data(filepath, trains):
                 num_tickets = int(row['Number of Tickets'])
                 fare = train.book_tickets(num_tickets)
                 if fare is not None:
-                    print(f"Booking confirmed for {row['Passenger Name']} on Train {train.train_name}. Total fare: ${fare}.")
+                    print(f"Booking confirmed for {row['Passenger Name']} on Train {train.train_name}. Total fare: only {fare} rupees.")
                 else:
                     print(f"Insufficient seats for {row['Passenger Name']} on Train {train.train_name}.")
             else:
@@ -72,7 +72,7 @@ def generate_reports(trains):
     print("\nReport 2: Revenue Details")
     print(f"{'Train ID':<15} {'Train Name':<20} {'Revenue':<10}")
     for train in trains.values():
-        print(f"{train.train_id:<15} {train.train_name:<20} ${train.revenue:<10}")
+        print(f"{train.train_id:<15} {train.train_name:<20} {train.revenue:<10}")
 
 def main():
     data_folder = '2\data'
