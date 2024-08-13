@@ -7,5 +7,5 @@ def load_and_display_image(image_path):
     plt.axis('off')
     plt.show()
 
-image_path = '3\hello.jpg'
+image_path = '3\\task1\hello.jpg'
 load_and_display_image(image_path)
