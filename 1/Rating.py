@@ -34,7 +34,7 @@ def calculate_average_ratings(reviews):
     average_ratings = {productId: sum(ratings) / len(ratings) for productId, ratings in product_ratings.items()}
     return average_ratings
 
-folder_path = '1/sample_data'
+folder_path = 'sample_data'
 all_reviews = []
 
 for filename in os.listdir(folder_path):
