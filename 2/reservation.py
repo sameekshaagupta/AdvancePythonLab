@@ -75,7 +75,7 @@ def generate_reports(trains):
         print(f"{train.train_id:<15} {train.train_name:<20} {train.revenue:<10}")
 
 def main():
-    data_folder = '2\data'
+    data_folder = 'data'
     train_file = os.path.join(data_folder, 'train.csv')
     passenger_file = os.path.join(data_folder, 'passengers.csv')
 
