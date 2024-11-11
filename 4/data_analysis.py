@@ -6,7 +6,7 @@ from sklearn.impute import SimpleImputer
 import matplotlib.pyplot as plt
 
 # Step 1: Data Loading
-df = pd.read_csv('4/data.csv')
+df = pd.read_csv('data.csv')
 
 # Step 2: Data Cleaning
 print("Missing values in each column:\n", df.isnull().sum())
