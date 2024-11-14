@@ -1,0 +1,16 @@
+{
+    "country": "India",
+    "date": "2024-11-18",
+    "confirmed_cases": {
+        "total": 1000000,
+        "new": 5000
+    },
+    "deaths": {
+        "total": 15000,
+        "new": 50
+    },
+    "recovered": {
+        "total": 950000,
+        "new": 3000
+    }
+}

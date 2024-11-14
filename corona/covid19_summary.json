@@ -1,0 +1,20 @@
+{
+    "Brazil": {
+        "confirmed_cases": 500000,
+        "deaths": 15000,
+        "recovered": 480000,
+        "active_cases": 5000
+    },
+    "India": {
+        "confirmed_cases": 1000000,
+        "deaths": 15000,
+        "recovered": 950000,
+        "active_cases": 35000
+    },
+    "USA": {
+        "confirmed_cases": 2500000,
+        "deaths": 20000,
+        "recovered": 2400000,
+        "active_cases": 80000
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "country": "USA",
+    "date": "2024-11-18",
+    "confirmed_cases": {
+        "total": 2500000,
+        "new": 12000
+    },
+    "deaths": {
+        "total": 20000,
+        "new": 70
+    },
+    "recovered": {
+        "total": 2400000,
+        "new": 10000
+    }
+}
