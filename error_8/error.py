@@ -16,6 +16,7 @@ class DiskSpaceFullError(Exception):
         super().__init__(f"Insufficient disk space to write to: {filepath}")
 
 
+
 def read_input_file(filepath):
     try:
         with open(filepath, 'r') as file:

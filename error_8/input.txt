@@ -1,0 +1,5 @@
+Hello, world! This is an example text file. 
+It contains multiple lines of text to demonstrate the text processing tool. 
+Each line may have different numbers of words and characters. 
+The tool should be able to count the number of words and calculate character frequencies. 
+Let's see how well it performs! 
