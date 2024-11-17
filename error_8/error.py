@@ -54,7 +54,6 @@ def write_output_file(filepath, word_count, char_freq):
         else:
             raise
 
-
 def main(input_filepath, output_filepath):
     try:
         # Step 1: Read input file
