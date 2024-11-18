@@ -1,77 +1,89 @@
-import pandas as pd
-from reportlab.lib.pagesizes import A4
-from reportlab.pdfgen import canvas
+import csv
+from fpdf import FPDF
 from datetime import datetime
+import PyPDF2
 import os
-from PyPDF2 import PdfMerger
 
-# Step 1: Load Order Data
-def load_order_data(file_path):
-    df = pd.read_csv(file_path)
-    return df
+# Load Order Data from CSV
+def load_order_data(file_name):
+    orders = []
+    with open(file_name, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            orders.append({
+                'order_id': row['OrderID'],
+                'customer_name': row['Customer Name'],
+                'product_name': row['Product Name'],
+                'quantity': int(row['Quantity']),
+                'unit_price': float(row['Unit Price'])
+            })
+    return orders
 
-# Step 2: Generate PDF Invoice for each order
-def generate_pdf_invoice(order, output_dir):
-    order_id = order['OrderID']
-    customer_name = order['CustomerName']
-    product_name = order['ProductName']
-    quantity = order['Quantity']
-    unit_price = order['UnitPrice']
-    total_amount = quantity * unit_price
+# Create PDF invoice for each order
+def create_pdf_invoice(order):
+    # Create PDF instance
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+
+    # Set font
+    pdf.set_font('Arial', 'B', 16)
     
-    # Create invoice PDF
-    invoice_filename = f"{output_dir}/Invoice_{order_id}.pdf"
-    c = canvas.Canvas(invoice_filename, pagesize=A4)
+    # Title and Invoice Number
+    pdf.cell(200, 10, txt=f"Invoice - {order['order_id']}", ln=True, align='C')
     
-    # Invoice content
-    c.setFont("Helvetica", 12)
-    c.drawString(100, 800, f"Invoice Number: {order_id}")
-    c.drawString(100, 780, f"Date of Purchase: {datetime.now().strftime('%Y-%m-%d')}")
-    c.drawString(100, 760, f"Customer Name: {customer_name}")
-    c.drawString(100, 740, f"Product Name: {product_name}")
-    c.drawString(100, 720, f"Quantity: {quantity}")
-    c.drawString(100, 700, f"Unit Price: ${unit_price:.2f}")
-    c.drawString(100, 680, f"Total Amount: ${total_amount:.2f}")
+    # Set font for details
+    pdf.set_font('Arial', '', 12)
     
-    c.showPage()
-    c.save()
-
-    return invoice_filename
-
-# Step 3: Merge all PDFs into a single file
-def merge_pdfs(pdf_list, output_filename):
-    merger = PdfMerger()
-
-    # Append each individual PDF to the merger
-    for pdf in pdf_list:
-        merger.append(pdf)
+    # Add order details
+    pdf.ln(10)
+    pdf.cell(100, 10, f"Date of Purchase: {datetime.now().strftime('%Y-%m-%d')}")
+    pdf.ln(10)
+    pdf.cell(100, 10, f"Customer Name: {order['customer_name']}")
+    pdf.ln(10)
+    pdf.cell(100, 10, f"Product Name: {order['product_name']}")
+    pdf.ln(10)
+    pdf.cell(100, 10, f"Quantity: {order['quantity']}")
+    pdf.ln(10)
+    pdf.cell(100, 10, f"Unit Price: ${order['unit_price']:.2f}")
+    pdf.ln(10)
+    total_amount = order['quantity'] * order['unit_price']
+    pdf.cell(100, 10, f"Total Amount: ${total_amount:.2f}")
     
-    # Write the merged PDF to the output file
-    merger.write(output_filename)
-    merger.close()
+    # Output the PDF to a file
+    pdf_file_name = f"invoice_{order['order_id']}.pdf"
+    pdf.output(pdf_file_name)
+    return pdf_file_name
 
-# Main Program
+# Merge all PDFs into a single PDF
+def merge_pdfs(pdf_files, output_file="all_invoices.pdf"):
+    merger = PyPDF2.PdfMerger()
+    for pdf_file in pdf_files:
+        if os.path.exists(pdf_file):
+            merger.append(pdf_file)
+        else:
+            print(f"Warning: PDF file {pdf_file} not found!")
+    
+    if pdf_files:  # Only merge if there are PDFs to merge
+        merger.write(output_file)
+        merger.close()
+        print(f"PDFs merged successfully into {output_file}")
+    else:
+        print("No PDFs to merge!")
+
+# Main Function
 def main():
-    input_csv = "orders.csv"  # Input CSV file
-    output_dir = "invoices"   # Directory to save individual PDFs
-    merged_pdf = "All_Invoices.pdf"  # Output merged PDF file
+    # Load orders from CSV
+    orders = load_order_data("orders.csv")
     
-    # Create directory for invoices if not exists
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    
-    # Load order data from CSV
-    order_data = load_order_data(input_csv)
-    
-    # Generate PDFs and store file paths
+    # Generate individual PDF invoices and collect their file names
     pdf_files = []
-    for _, order in order_data.iterrows():
-        pdf_file = generate_pdf_invoice(order, output_dir)
+    for order in orders:
+        pdf_file = create_pdf_invoice(order)
         pdf_files.append(pdf_file)
     
-    # Merge all PDFs into one file
-    merge_pdfs(pdf_files, merged_pdf)
-    print(f"All invoices merged into {merged_pdf}")
+    # Merge the generated PDF invoices into one
+    merge_pdfs(pdf_files)
 
 if __name__ == "__main__":
     main()
