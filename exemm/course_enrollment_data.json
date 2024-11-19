@@ -1,0 +1,74 @@
+[
+    {
+        "Student ID": 1,
+        "Name": "Alice Smith",
+        "Email": "alice.smith@example.com",
+        "Course Name": "Computer Science 101",
+        "Enrollment Date": "2024-08-01",
+        "Credits": 4,
+        "Grade": "A"
+    },
+    {
+        "Student ID": 2,
+        "Name": "Bob Johnson",
+        "Email": "bob.johnson@example.com",
+        "Course Name": "Mathematics 101",
+        "Enrollment Date": "2024-08-02",
+        "Credits": 3,
+        "Grade": "B"
+    },
+    {
+        "Student ID": 3,
+        "Name": "Charlie Brown",
+        "Email": "charlie.brown@example.com",
+        "Course Name": "Computer Science 101",
+        "Enrollment Date": "2024-08-03",
+        "Credits": 4,
+        "Grade": "A"
+    },
+    {
+        "Student ID": 4,
+        "Name": "David Lee",
+        "Email": "david.lee@example.com",
+        "Course Name": "Computer Science 101",
+        "Enrollment Date": "2024-08-04",
+        "Credits": 4,
+        "Grade": "C"
+    },
+    {
+        "Student ID": 5,
+        "Name": "Eva Green",
+        "Email": "eva.green@example.com",
+        "Course Name": "Mathematics 101",
+        "Enrollment Date": "2024-08-05",
+        "Credits": 3,
+        "Grade": "B"
+    },
+    {
+        "Student ID": 6,
+        "Name": "Frank White",
+        "Email": "frank.white@example.com",
+        "Course Name": "Physics 101",
+        "Enrollment Date": "2024-08-06",
+        "Credits": 3,
+        "Grade": "A"
+    },
+    {
+        "Student ID": 7,
+        "Name": "Grace Black",
+        "Email": "grace.black@example.com",
+        "Course Name": "Computer Science 101",
+        "Enrollment Date": "2024-08-07",
+        "Credits": 4,
+        "Grade": "B"
+    },
+    {
+        "Student ID": 8,
+        "Name": "Henry Harris",
+        "Email": "henry.harris@example.com",
+        "Course Name": "Physics 101",
+        "Enrollment Date": "2024-08-08",
+        "Credits": 3,
+        "Grade": "F"
+    }
+]

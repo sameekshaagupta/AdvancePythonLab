@@ -1,0 +1,11 @@
+Customer ID,Name,Age,Email,Purchase Amount,Purchase Date
+1,John Doe,24,john@example.com,150.75,2024-11-01
+2,Jane Smith,34,jane@example.com,200.50,2024-11-02
+3,Emily Johnson,45,emily@example.com,300.00,2024-11-03
+4,Michael Brown,52,michael@example.com,500.30,2024-11-04
+5,David Wilson,61,david@example.com,600.90,2024-11-05
+6,Amy Miller,29,amy@example.com,250.40,2024-11-06
+7,Chris Lee,36,chris@example.com,150.00,2024-11-07
+8,Kate Davis,49,kate@example.com,350.60,2024-11-08
+9,Mark White,55,mark@example.com,500.00,2024-11-09
+10,Linda Harris,25,linda@example.com,160.90,2024-11-10
